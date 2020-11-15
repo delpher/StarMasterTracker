@@ -3,10 +3,6 @@
 
 #include "../.pio/libdeps/nanoatmega328/IRremote/src/IRremote.h"
 
-#define PLAY_BTN 0XC53A7986
-#define PAUSE_BTN 0XC53AF906
-#define REWIND_BTN 0XC53AB946
-
 typedef void (*callback)();
 
 class Remote {

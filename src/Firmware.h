@@ -1,15 +1,13 @@
 #ifndef STARMASTERTRACKER_FIRMWARE_H
 #define STARMASTERTRACKER_FIRMWARE_H
 
-#include "Led.h"
 #include "Remote.h"
+#include "Motor.h"
 
 class Firmware {
 private:
-    static String mode;
-    static Led *red_led;
-    static Led *green_led;
     static Remote *remote;
+    static Motor *motor;
 public:
     static void init();
     static void run();

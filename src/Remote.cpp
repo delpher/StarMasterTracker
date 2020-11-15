@@ -1,4 +1,5 @@
 #include "Remote.h"
+#include "pioneer_dvd_remote.h"
 
 void null_handler() {}
 

@@ -10,11 +10,13 @@ void Motor::init() {
 
 void Motor::forward() {
     mode = MODE_FORWARD;
+    stepper->stop();
     stepper->setRPM(2.5);
 }
 
 void Motor::backward() {
     mode = MODE_BACKWARD;
+    stepper->stop();
     stepper->setRPM(200);
 }
 
@@ -24,17 +26,18 @@ void Motor::stop() {
 
 void Motor::update() {
     switch (mode) {
-        case MODE_STOP: {
-            stepper->stop();
+        case MODE_STOP: stepper->stop(); break;
+        case MODE_FORWARD:
+            if (stepper->getStepsRemaining() == 0) {
+                stepper->startMove(-3200);
+            }
             break;
-        }
-        case MODE_FORWARD: {
-            stepper->rotate(-1);
+        case MODE_BACKWARD:
+            if (stepper->getStepsRemaining() == 0) {
+                stepper->startMove(3200);
+            }
             break;
-        }
-        case MODE_BACKWARD: {
-            stepper->rotate(1);
-            break;
-        }
+
     }
+    stepper->nextAction();
 }

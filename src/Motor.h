@@ -7,7 +7,6 @@
 #define MODE_FORWARD 1
 #define MODE_BACKWARD 2
 
-
 class Motor {
 private:
     A4988 *stepper;
